@@ -2,12 +2,16 @@ import React from 'react';
 import MainLayout from '../layouts/MainLayout';
 import { Button, Container, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { useAppDispatch } from '../store/hooks';
+import { login } from '../store/actions/auth';
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (userData) => {
-    console.log(userData);
+  const onSubmit = (userData: any) => {
+    dispatch(login(userData));
   };
 
   return (

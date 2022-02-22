@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './Header.module.scss';
 import { Container } from '@mui/material';
 import Link from 'next/link';
+import { useAppSelector } from '../../store/hooks';
 
 const Header = () => {
-  const userData = false;
+  const userData = useAppSelector((state) => state.auth.userData);
 
   return (
     <header className={styles.header}>
