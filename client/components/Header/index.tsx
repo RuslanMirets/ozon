@@ -11,13 +11,11 @@ const Header = () => {
       <Container>
         <div className={styles.body}>
           <Link href="/">
-            <a className={styles.logo}>
-              OZON
-            </a>
+            <a className={styles.logo}>OZON</a>
           </Link>
           <ul className={styles.menu}>
             <li>
-              <Link href="#">
+              <Link href="/">
                 <a>Главная</a>
               </Link>
             </li>

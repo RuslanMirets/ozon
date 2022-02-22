@@ -53,3 +53,14 @@ ul {
     gap: 15px;
   }
 }
+
+.user-list {
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+  }
+}

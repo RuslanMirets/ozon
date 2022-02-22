@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 export class UsersController {
   constructor(private userService: UserService) {}
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   getAll() {
     return this.userService.findAll();
