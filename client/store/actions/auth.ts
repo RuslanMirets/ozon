@@ -2,7 +2,7 @@ import { postAPI } from './../../utils/FetchData';
 import { authSlice } from './../slices/auth';
 import { IUser } from './../../models/user';
 import { AppDispatch } from '../store';
-import { setCookie } from 'nookies';
+import { destroyCookie, setCookie } from 'nookies';
 
 export const login = (dto: IUser) => async (dispatch: AppDispatch) => {
   try {
@@ -12,6 +12,14 @@ export const login = (dto: IUser) => async (dispatch: AppDispatch) => {
       path: '/',
     });
     dispatch(authSlice.actions.login(response.data));
+  } catch (error: any) {
+    console.log(error.response.data.message);
+  }
+};
+export const logout = () => async (dispatch: AppDispatch) => {
+  try {
+    destroyCookie(null, 'ozonToken', null);
+    dispatch(authSlice.actions.logout());
   } catch (error: any) {
     console.log(error.response.data.message);
   }

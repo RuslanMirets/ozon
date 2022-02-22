@@ -2,10 +2,16 @@ import React from 'react';
 import styles from './Header.module.scss';
 import { Container } from '@mui/material';
 import Link from 'next/link';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { logout } from '../../store/actions/auth';
 
 const Header = () => {
+  const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.auth.userData);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <header className={styles.header}>
@@ -39,10 +45,8 @@ const Header = () => {
                     <a>Профиль</a>
                   </Link>
                 </li>
-                <li>
-                  <Link href="#">
-                    <a>Выйти</a>
-                  </Link>
+                <li style={{ cursor: 'pointer' }} onClick={handleLogout}>
+                  Выйти
                 </li>
               </>
             ) : (
