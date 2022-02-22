@@ -3,18 +3,17 @@ import MainLayout from '../layouts/MainLayout';
 import { Button, Container, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { login } from '../store/actions/auth';
+import { registration } from '../store/actions/auth';
 import router from 'next/router';
 
-const Login = () => {
+const Register = () => {
   const dispatch = useAppDispatch();
-  const userData = useAppSelector((state) => state.auth.userData);
+  const { userData } = useAppSelector((state) => state.auth);
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (userData: any) => {
-    dispatch(login(userData));
-    reset();
+    dispatch(registration(userData));
   };
 
   useEffect(() => {
@@ -30,6 +29,13 @@ const Login = () => {
           <h1>Авторизация</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
+              type="text"
+              label="Имя"
+              variant="outlined"
+              size="small"
+              {...register('name')}
+            />
+            <TextField
               type="email"
               label="Email"
               variant="outlined"
@@ -44,7 +50,7 @@ const Login = () => {
               {...register('password')}
             />
             <Button type="submit" variant="contained">
-              Войти
+              Зарегистрироваться
             </Button>
           </form>
         </div>
@@ -53,4 +59,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

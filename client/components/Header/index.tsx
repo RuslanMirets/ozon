@@ -57,7 +57,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <Link href="/register">
                     <a>Зарегистрироваться</a>
                   </Link>
                 </li>
