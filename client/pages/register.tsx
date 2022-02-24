@@ -5,15 +5,21 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { registration } from '../store/actions/auth';
 import router from 'next/router';
+import { RegisterFormSchema } from '../utils/validations';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Register = () => {
   const dispatch = useAppDispatch();
   const { userData } = useAppSelector((state) => state.auth);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset, formState } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(RegisterFormSchema),
+  });
 
   const onSubmit = (userData: any) => {
     dispatch(registration(userData));
+    reset();
   };
 
   useEffect(() => {
@@ -41,6 +47,8 @@ const Register = () => {
               variant="outlined"
               size="small"
               {...register('email')}
+              error={!!formState.errors['email']?.message}
+              helperText={formState.errors['email']?.message}
             />
             <TextField
               type="password"
@@ -48,8 +56,13 @@ const Register = () => {
               variant="outlined"
               size="small"
               {...register('password')}
+              error={!!formState.errors['password']?.message}
+              helperText={formState.errors['password']?.message}
             />
-            <Button type="submit" variant="contained">
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={!formState.isValid || formState.isSubmitting}>
               Зарегистрироваться
             </Button>
           </form>

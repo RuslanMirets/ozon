@@ -18,7 +18,15 @@ const Toast = ({ body, severity }: IProps) => {
   return (
     <Snackbar open autoHideDuration={4000} onClose={handleShow}>
       <Alert onClose={handleShow} severity={severity} sx={{ width: '100%' }}>
-        {body}
+        {typeof body === 'string' ? (
+          body
+        ) : (
+          <ul>
+            {body.map((text, index) => (
+              <li key={index}>{text}</li>
+            ))}
+          </ul>
+        )}
       </Alert>
     </Snackbar>
   );

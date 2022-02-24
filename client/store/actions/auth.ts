@@ -15,16 +15,17 @@ export const login = (dto: IUser) => async (dispatch: AppDispatch) => {
     dispatch(authSlice.actions.login(response.data));
     dispatch(alertSlice.actions.success('Успешная авторизация'));
   } catch (error: any) {
-    dispatch(alertSlice.actions.errors('Неверный логин или пароль'));
-
+    // dispatch(alertSlice.actions.errors('Неверный логин или пароль'));
+    dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
 export const registration = (dto: IUser) => async (dispatch: AppDispatch) => {
   try {
     const response = await postAPI('auth/register', dto);
     dispatch(authSlice.actions.register(response.data));
+    dispatch(alertSlice.actions.success('Успешная регистрация'));
   } catch (error: any) {
-    console.log(error.response.data.message);
+    dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
 export const logout = () => async (dispatch: AppDispatch) => {
