@@ -7,7 +7,7 @@ const Alert = () => {
 
   return (
     <>
-      {success && <Toast severity="success" body={success} />}{' '}
+      {success && <Toast severity="success" body={success} />}
       {errors && <Toast severity="error" body={errors} />}
     </>
   );

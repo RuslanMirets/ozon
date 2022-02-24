@@ -15,7 +15,6 @@ export const login = (dto: IUser) => async (dispatch: AppDispatch) => {
     dispatch(authSlice.actions.login(response.data));
     dispatch(alertSlice.actions.success('Успешная авторизация'));
   } catch (error: any) {
-    // dispatch(alertSlice.actions.errors('Неверный логин или пароль'));
     dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
