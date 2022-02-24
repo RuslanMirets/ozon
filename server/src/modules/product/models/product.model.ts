@@ -1,3 +1,4 @@
+import { json } from 'sequelize';
 import { Table, Model, Column, DataType } from 'sequelize-typescript';
 
 @Table({ tableName: 'Product' })
