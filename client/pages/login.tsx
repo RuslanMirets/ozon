@@ -24,7 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userData) {
-      router.push('/');
+      router.push(`/profile/${userData.id}`);
     }
   }, [userData]);
 

@@ -41,7 +41,7 @@ const Header = () => {
             {userData ? (
               <>
                 <li>
-                  <Link href="#">
+                  <Link href={`/profile/${userData.id}`}>
                     <a>Профиль</a>
                   </Link>
                 </li>
