@@ -12,8 +12,8 @@ export class ProductService {
   ) {}
 
   async create(dto: ProductDto, image: any): Promise<Product> {
-    const imagePath = this.fileService.createFile(FileType.IMAGE, image);
-    return await this.productRepository.create<Product>({ ...dto, image: imagePath });
+    // const imagePath = this.fileService.createFile(FileType.IMAGE, image);
+    return await this.productRepository.create<Product>({...dto, image} );
   }
 
   async findAll() {

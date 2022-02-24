@@ -1,4 +1,3 @@
-import { json } from 'sequelize';
 import { Table, Model, Column, DataType } from 'sequelize-typescript';
 
 @Table({ tableName: 'Product' })
@@ -12,6 +11,6 @@ export class Product extends Model<Product> {
   @Column({ type: DataType.STRING, allowNull: false })
   price: number;
 
-  @Column({ type: DataType.STRING, allowNull: true })
+  @Column({ type: DataType.JSONB(), allowNull: true })
   image: string;
 }
