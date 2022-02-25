@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { User } from './modules/user/models/user.model';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -12,9 +14,10 @@ import { AppService } from './app.service';
       username: 'postgres',
       password: '123456',
       database: 'ozon',
-      models: [],
+      models: [User],
       synchronize: true,
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
