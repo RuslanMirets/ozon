@@ -1,3 +1,4 @@
+import { RoleModule } from './../role/role.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -10,6 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
   imports: [
     PassportModule,
     UserModule,
+    RoleModule,
     JwtModule.register({
       secret: 'secret',
       signOptions: {
