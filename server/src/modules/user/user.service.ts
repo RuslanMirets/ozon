@@ -18,4 +18,8 @@ export class UserService {
   async findOneById(id: string): Promise<User> {
     return await this.userModel.findOne<User>({ where: { id } });
   }
+
+  async findAll() {
+    return await this.userModel.findAll();
+  }
 }
